@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Middleware;
+namespace Asciisd\App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class Referrals
     {
         $referral_token = $request->query('ref');
         if ($referral_token) {
-            return $next($request)->withCookie(\cookie('referral_token', $referral_token, config('referral_token_cookie_lifetime')));
+            return $next($request)->withCookie(\cookie('referral_token', $referral_token, intval(config('referral_token_cookie_lifetime'))));
         }
 
         return $next($request);
