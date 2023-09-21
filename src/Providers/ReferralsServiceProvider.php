@@ -24,6 +24,9 @@ class ReferralsServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__.'/../../config/referrals.php' => config_path('courier.php'),
+        ]);
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }

@@ -11,7 +11,6 @@ use Ramsey\Uuid\Uuid;
 trait Referrerable
 {
 
-
     /**
      * Check if user is registered with referral token or not.
      *
@@ -68,7 +67,7 @@ trait Referrerable
     public function referralLink(): Attribute
     {
         return Attribute::make(function(){
-            return route('register', ['ref' => $this->referral_token]);
+            return route(config('referral_route'), ['ref' => $this->referral_token]);
         });
     }
 
