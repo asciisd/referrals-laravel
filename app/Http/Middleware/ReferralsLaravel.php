@@ -20,7 +20,7 @@ class Referrals
         if ($referral_token) {
             return $next($request)->withCookie(\cookie('referral_token', $referral_token, intval(config('referral_token_cookie_lifetime'))));
         }
-
+ 
         return $next($request);
     }
 }

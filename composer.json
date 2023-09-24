@@ -1,0 +1,11 @@
+{
+    "name": "asciisd/referarals--laravel",
+    "description": "Adding referral token and track referrals in your project",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Asciisd\\ReferaralsLaravel\\": "src/"
+        }
+    },
+    "require": {}
+}
