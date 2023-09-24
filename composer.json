@@ -1,5 +1,5 @@
 {
-    "name": "asciisd/referarals--laravel",
+    "name": "asciisd/referrals-laravel.git",
     "description": "Adding referral token and track referrals in your project",
     "type": "library",
     "autoload": {
