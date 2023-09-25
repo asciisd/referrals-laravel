@@ -1,0 +1,43 @@
+{
+    "name": "asciisd/referrals-laravel",
+    "description": "Add referrals to laravel project and track referral users.",
+    "type": "library",
+    "keywords": [
+        "Laravel",
+        "referrals"
+    ],
+    "support": {
+        "issues": "https://github.com/asciisd/referrals-laravel/issues",
+        "source": "https://github.com/asciisd/referrals-laravel"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Asciisd\\ReferralsLaravel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mohamed El Ogail",
+            "email": "melogail@asciisd.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asciisd\\ReferaralsLaravel\\Providers\\ReferralsServiceProvider"
+            ]
+        }
+    },
+    "homepage": "https://github.com/asciisd/referrals-laravel",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {},
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Nova;
+namespace Asciisd\ReferaralsLaravel\app\Nova;
 
+use App\Nova\Resource;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;

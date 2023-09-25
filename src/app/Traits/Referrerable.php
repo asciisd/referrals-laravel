@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Traits;
+namespace Asciisd\ReferaralsLaravel\app\Traits;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
+use function App\Traits\route;
 
 trait Referrerable
 {

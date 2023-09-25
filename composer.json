@@ -1,42 +1,29 @@
 {
     "name": "asciisd/referrals-laravel",
-    "description": "Add referrals to laravel project and track referral users.",
+    "description": "Add referral feature to your project where user can invite his/her friends and you can track these invitations.",
     "type": "library",
-    "keywords": [
-        "Laravel",
-        "referrals"
-    ],
-    "support": {
-        "issues": "https://github.com/asciisd/referrals-laravel/issues",
-        "source": "https://github.com/asciisd/referrals-laravel"
-    },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Asciisd\\ReferralsLaravel\\": "src/"
+            "Asciisd\\ReferralsLaravel\\": "src/app/"
         }
     },
     "authors": [
         {
-            "name": "Mohamed El Ogail",
-            "email": "melogail@asciisd.com"
+            "name": "Mohamed Elogail",
+            "email": "moh.elogail@gmail.com"
         }
     ],
+    "minimum-stability": "stable",
+    "require": {},
     "extra": {
         "laravel": {
             "providers": [
-                "Asciisd\\Cashier\\Providers\\ReferralsServiceProvider"
+                "Asciisd\\ReferaralsLaravel\\app\\Providers\\ReferralsServiceProvider"
             ]
         }
     },
-    "homepage": "https://github.com/asciisd/referrals-laravel",
-    "minimum-stability": "stable",
     "prefer-stable": true,
-    "require": {},
-    "scripts": {
-        "test": "vendor/bin/phpunit --colors=always",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-    },
     "config": {
         "sort-packages": true
     }

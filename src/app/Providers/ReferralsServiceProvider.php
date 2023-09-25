@@ -1,10 +1,11 @@
 <?php
 
-namespace Asciisd\ReferralsLaravel\Providers;
+namespace Asciisd\ReferaralsLaravel\app\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use function Asciisd\ReferaralsLaravel\Providers\config_path;
 
-class ReferralsServiceProvider
+class ReferralsServiceProvider extends ServiceProvider
 {
 
     /**
