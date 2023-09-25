@@ -26,7 +26,7 @@ class ReferralsServiceProvider
     {
         $this->publishes([
             __DIR__.'/../../config/referrals.php' => config_path('referrals.php'),
-        ]);
+        ], 'referrals-config');
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 }
