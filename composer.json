@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Asciisd\\ReferaralsLaravel\\app\\Providers\\ReferralsServiceProvider"
+                "Asciisd\\ReferralsLaravel\\app\\Providers\\ReferralsServiceProvider"
             ]
         }
     },
