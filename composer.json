@@ -1,11 +1,36 @@
 {
-    "name": "asciisd/referarals--laravel",
+    "name": "asciisd/referrals-laravel.git",
     "description": "Adding referral token and track referrals in your project",
     "type": "library",
+    "keywords": [
+        "Laravel",
+        "referrals"
+    ],
+    "support": {
+        "issues": "https://github.com/asciisd/referrals-laravel/issues",
+        "source": "https://github.com/asciisd/referrals-laravel"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mohamed El Ogail",
+            "email": "melogail@asciisd.com"
+        }
+    ],
+    "homepage": "https://github.com/asciisd/referrals-laravel",
     "autoload": {
         "psr-4": {
             "Asciisd\\ReferaralsLaravel\\": "src/"
         }
     },
-    "require": {}
+    "require": {},
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
