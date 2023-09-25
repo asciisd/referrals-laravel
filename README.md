@@ -39,19 +39,21 @@ The `referrer_id` is the id of the user who sent the invitation link.
 For further usage of the referral token, you can use `ReferralsLaravel` middleware inside your `Kernel.php` file.
 
 You can set and alias to your middleware to use it with specific routes:
+
 ```php
 protected $middlewareAliases = [
     /*...*/
-    'referrals' => \Asciisd\App\Http\Middleware\Referrals::class,
+    'referrals' => \Asciisd\ReferaralsLaravel\app\Http\Middleware\Referrals::class,
 ];
 ```
 
 Or you can set it to any of your middleware groups:
+
 ```php
 protected $middlewareGroups = [
         'web' => [
             /*...*/
-            \Asciisd\App\Http\Middleware\Referrals::class,
+            \Asciisd\ReferaralsLaravel\app\Http\Middleware\Referrals::class,
         ],
         /*...*/
 ]
