@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Asciisd\ReferaralsLaravel\app\Http\Middleware;
+namespace Asciisd\ReferralsLaravel\app\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

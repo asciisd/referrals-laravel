@@ -1,6 +1,6 @@
 <?php
 
-namespace Asciisd\ReferaralsLaravel\app\Traits;
+namespace Asciisd\ReferralsLaravel\app\Traits;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

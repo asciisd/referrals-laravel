@@ -1,6 +1,6 @@
 <?php
 
-namespace Asciisd\ReferaralsLaravel\app\Nova;
+namespace Asciisd\ReferralsLaravel\app\Nova;
 
 use App\Nova\Resource;
 use Illuminate\Http\Request;
