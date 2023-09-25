@@ -1,6 +1,6 @@
 <?php
 
-namespace Ascii\ReferralsLaravel\Providers;
+namespace Asciisd\ReferralsLaravel\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -25,8 +25,8 @@ class ReferralsServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/referrals.php' => config_path('referrals.php'),
+            __DIR__.'/../config/referrals.php' => config_path('referrals.php'),
         ], 'referrals-config');
-        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 }
