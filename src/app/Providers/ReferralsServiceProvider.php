@@ -1,6 +1,6 @@
 <?php
 
-namespace Asciisd\ReferaralsLaravel\app\Providers;
+namespace Asciisd\ReferralsLaravel\app\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
