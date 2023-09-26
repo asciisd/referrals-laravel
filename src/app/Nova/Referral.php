@@ -1,6 +1,6 @@
 <?php
 
-namespace Asciisd\ReferralsLaravel\app\Nova;
+namespace App\Nova;
 
 use App\Nova\Resource;
 use Illuminate\Http\Request;
@@ -15,7 +15,7 @@ class Referral extends Resource
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Referral>
+     * @var class-string<\App\Models\User>
      */
     public static $model = \App\Models\User::class;
 
@@ -105,7 +105,7 @@ class Referral extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->where('referral_token', '<>', '')
+        return $query->whereNotNull('referral_token')
             ->withCount('getReferrals');
     }
 }

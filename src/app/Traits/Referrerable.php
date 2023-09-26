@@ -29,7 +29,7 @@ trait Referrerable
      */
     public function getReferrals(): HasMany
     {
-        return $this->hasMany($this, 'referred_id', 'id');
+        return $this->hasMany($this, 'referrer_id', 'id');
     }
 
     /**
