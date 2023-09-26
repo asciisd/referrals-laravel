@@ -14,6 +14,7 @@ To publish the `referrals.php` config file use the `publish` command:
 ```
 $ php artisan vendor:publish
 ```
+and from the providers list choose the `ReferralsLaravelServiceProvider`
 
 Next, inside your `.env` file, add the route you want the invited user to be redirected to.
 ```dotenv
@@ -29,6 +30,14 @@ referral_token_cookie_lifetime=60*24
 
 ## Usage:
 To use the package in your project, simply use the `Referrable` trait in your users model.
+```php
+class User extends Authenticatable implements MustVerifyEmail{
+     /*...*/
+     use \Asciisd\ReferralsLaravel\app\Traits\Referrerable;
+     /*...*/
+ 
+}
+```
 
 Next, use `php artisan migrate` to migrate the database file. This migration will update the database default `users` table
 and add two new columns `referral_token` and `referrer_id`.
@@ -43,7 +52,7 @@ You can set and alias to your middleware to use it with specific routes:
 ```php
 protected $middlewareAliases = [
     /*...*/
-    'referrals' => \Asciisd\ReferaralsLaravel\app\Http\Middleware\Referrals::class,
+    'referrals' => \Asciisd\ReferralsLaravel\app\Http\Middleware\ReferralsLaravel::class,
 ];
 ```
 
@@ -53,9 +62,11 @@ Or you can set it to any of your middleware groups:
 protected $middlewareGroups = [
         'web' => [
             /*...*/
-            \Asciisd\ReferaralsLaravel\app\Http\Middleware\Referrals::class,
+            \Asciisd\ReferralsLaravel\app\Http\Middleware\ReferralsLaravel::class,
         ],
         /*...*/
 ]
 ```
+
+
 

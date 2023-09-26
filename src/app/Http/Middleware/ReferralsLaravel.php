@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Referrals
+class ReferralsLaravel
 {
     /**
      * Handle an incoming request.
