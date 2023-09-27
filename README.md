@@ -68,5 +68,11 @@ protected $middlewareGroups = [
 ]
 ```
 
+Last thing is to add the two new columns inside your `User` model in the `protected $fillable` property along with other
+attributes:
+```php
+protected $fillable = ['referral_token', 'referrer_id'];
+```
+
 
 
