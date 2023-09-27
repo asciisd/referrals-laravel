@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
-use function App\Traits\route;
 
 trait Referrerable
 {
@@ -68,7 +67,7 @@ trait Referrerable
     public function referralLink(): Attribute
     {
         return Attribute::make(function(){
-            return route(config('referral_route'), ['ref' => $this->referral_token]);
+            return route(config('referrals.referral_route'), ['ref' => $this->referral_token]);
         });
     }
 
