@@ -68,11 +68,17 @@ protected $middlewareGroups = [
 ]
 ```
 
-Last thing is to add the two new columns inside your `User` model in the `protected $fillable` property along with other
+Add the two new columns inside your `User` model in the `protected $fillable` property along with other
 attributes:
 ```php
 protected $fillable = ['referral_token', 'referrer_id'];
 ```
 
+Add `referral_link` to `protected $append` to use it as user property:
+```php
+protected $append = ['referral_link'];
+```
 
-
+## Register with Nova
+Add nova resource `Referral` will be automatically published during publishing the service provider, to use
+the package with Nova just add the `Referral` resource to `NovaServiceProvider` file to register it inside your nova.
