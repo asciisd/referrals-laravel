@@ -29,6 +29,6 @@ return [
     |
     */
 
-    'referral_token_cookie_lifetime' => env('REFERRAL_TOKEN_COOKIE_LIFETIME', 60 * 24),
+    'referral_token_cookie_lifetime' => env('REFERRAL_TOKEN_COOKIE_LIFETIME', 1500),
 
 ];
