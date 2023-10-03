@@ -5,7 +5,6 @@ namespace Asciisd\ReferralsLaravel\app\Traits;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 trait Referrerable
@@ -26,7 +25,7 @@ trait Referrerable
      *
      * @return HasMany
      */
-    public function getReferrals(): HasMany
+    public function referrals(): HasMany
     {
         return $this->hasMany($this, 'referrer_id', 'id');
     }
@@ -34,7 +33,7 @@ trait Referrerable
     /**
      * @return BelongsTo
      */
-    public function getReferrer(): BelongsTo
+    public function referrer(): BelongsTo
     {
         return $this->belongsTo($this, 'referrer_id', 'id');
     }
@@ -57,7 +56,7 @@ trait Referrerable
     public function generateReferralToken(): bool
     {
         if (!$this->hasReferralToken()) {
-            return $this->update(['referral_token' => Str::random()]);
+            return $this->update(['referral_token' => random_int(1000000, 9999999)]);
 
         }
 
@@ -66,7 +65,7 @@ trait Referrerable
 
     public function referralLink(): Attribute
     {
-        return Attribute::make(function(){
+        return Attribute::make(function () {
             return route(config('referrals.referral_route'), ['ref' => $this->referral_token]);
         });
     }
