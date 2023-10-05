@@ -74,7 +74,7 @@ trait Referrerable
     public function referralLink(): Attribute
     {
         return Attribute::make(function () {
-            return route(config('referrals.referral_route'), ['ref' => $this->referrals()->first()->referral_token]);
+            return $this->getReferralLink();
         });
     }
 
@@ -98,7 +98,7 @@ trait Referrerable
     public function referralToken(): Attribute
     {
         return Attribute::make(function () {
-            return $this->referrals()->first()->referral_token;
+            return $this->getReferralToken();
         });
     }
 
