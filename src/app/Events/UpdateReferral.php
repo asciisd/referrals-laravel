@@ -1,6 +1,6 @@
 <?php
 
-namespace Asciisd\ReferaralsLaravel\app\Events;
+namespace Asciisd\ReferralsLaravel\app\Events;
 
 use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;

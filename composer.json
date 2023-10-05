@@ -1,6 +1,6 @@
 {
     "name": "asciisd/referrals-laravel",
-    "description": "Add referral feature to your project where user can invite his/her friends and you can track these invitations.",
+    "description": "Adding referrals feature to your laravel project",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -15,16 +15,9 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {},
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Asciisd\\ReferralsLaravel\\app\\Providers\\ReferralsServiceProvider"
-            ]
-        }
-    },
     "prefer-stable": true,
     "config": {
         "sort-packages": true
-    }
+    },
+    "require": {}
 }

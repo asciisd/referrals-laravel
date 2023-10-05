@@ -1,6 +1,6 @@
 <?php
 
-namespace Asciisd\ReferaralsLaravel\app\Listeners;
+namespace Asciisd\ReferralsLaravel\app\Listeners;
 
 use http\Cookie;
 
@@ -14,7 +14,7 @@ class UpdateReferralsListener
     /**
      * Handle the event.
      */
-    public function handle(UpdateReferral $event): void
+    public function handle($event): void
     {
         $event->user->referrals()->create(['referrer_id' => $event->user->getReferrerIdFromReferralToken()]);
     }
