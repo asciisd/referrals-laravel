@@ -3,19 +3,21 @@
 namespace Asciisd\ReferralsLaravel\app\Traits;
 
 use App\Models\User;
-use Asciisd\ReferaralsLaravel\app\Models\Referral;
+use Asciisd\ReferralsLaravel\app\Models\Referral;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Ramsey\Uuid\Uuid;
 
 trait Referrerable
 {
 
-    public function referral(): MorphOne
+    public function referrals(): MorphMany
     {
         return $this->morphMany(Referral::class, 'referrable');
     }
+
 
     /**
      * Check if user is registered with referral token or not.
@@ -24,7 +26,7 @@ trait Referrerable
      */
     public function isReferred(): bool
     {
-        return isset($this->referrer_id);
+        return isset($this->referrals->referrer_id);
     }
 
 
@@ -35,7 +37,7 @@ trait Referrerable
      */
     public function hasReferralToken(): bool
     {
-        return isset($this->referral_token);
+        return isset($this->referrals()->first()->referral_token);
     }
 
     /**
@@ -46,17 +48,57 @@ trait Referrerable
     public function generateReferralToken(): bool
     {
         if (!$this->hasReferralToken()) {
-            return $this->update(['referral_token' => random_int(1000000, 9999999)]);
+            return $this->referrals()->update(['referral_token' => random_int(1000000, 9999999)]);
 
         }
 
         return false;
     }
 
+    /**
+     * Get referral link
+     *
+     * @return mixed
+     */
+    public function getReferralLink()
+    {
+        return route(config('referrals.referral_route'), ['ref' => $this->referrals()->first()->referral_token]);
+    }
+
+
+    /**
+     * Adding accessor to User model as referral_link
+     *
+     * @return Attribute
+     */
     public function referralLink(): Attribute
     {
         return Attribute::make(function () {
-            return route(config('referrals.referral_route'), ['ref' => $this->referral_token]);
+            return route(config('referrals.referral_route'), ['ref' => $this->referrals()->first()->referral_token]);
+        });
+    }
+
+
+    /**
+     * Get referral token
+     *
+     * @return mixed
+     */
+    public function getReferralToken()
+    {
+        return $this->referrals()->first()->referral_token;
+    }
+
+
+    /**
+     * Adding accessor to user attributes as referral_token
+     *
+     * @return Attribute
+     */
+    public function referralToken(): Attribute
+    {
+        return Attribute::make(function () {
+            return $this->referrals()->first()->referral_token;
         });
     }
 

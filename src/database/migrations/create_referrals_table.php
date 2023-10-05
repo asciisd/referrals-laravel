@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('referrals', function (Blueprint $table) {
             $table->id();
-            $table->string('referral_token');
-            $table->string('referrer_id');
-            $table->morphs('referrable');
+            $table->string('referral_token')->nullable();
+            $table->string('referrer_id')->nullable();
+            $table->morphs('referrable')->nullable();
             $table->timestamps();
 
         });
