@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('referrer_id');
             $table->morphs('referrable');
             $table->timestamps();
+            
         });
     }
 
