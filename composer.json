@@ -14,6 +14,13 @@
             "email": "moh.elogail@gmail.com"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asciisd\\ReferralsLaravel\\app\\Providers\\ReferralsServiceProvider"
+            ]
+        }
+    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
