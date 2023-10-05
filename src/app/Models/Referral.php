@@ -2,8 +2,9 @@
 
 namespace Asciisd\ReferralsLaravel\app\Models;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Referral extends Model
 {
@@ -21,7 +22,7 @@ class Referral extends Model
      * @var array
      */
     protected $fillable = [
-        'referral_token', 'referrer_id'];
+        'user_id', 'referral_token', 'referrer_id'];
 
 
     /**
@@ -36,11 +37,11 @@ class Referral extends Model
     /**
      * Polymorphic relationship
      *
-     * @return MorphTo
+     * @return BelongsTo
      */
-    public function referrable(): MorphTo
+    public function referrer(): BelongsTo
     {
-        return $this->morphTo();
+        return $this->belongsTo(User::class);
     }
 
 }

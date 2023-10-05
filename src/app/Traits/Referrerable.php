@@ -5,17 +5,15 @@ namespace Asciisd\ReferralsLaravel\app\Traits;
 use App\Models\User;
 use Asciisd\ReferralsLaravel\app\Models\Referral;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Ramsey\Uuid\Uuid;
 
 trait Referrerable
 {
 
-    public function referrals(): MorphMany
+    public function referrals(): HasMany
     {
-        return $this->morphMany(Referral::class, 'referrable');
+        return $this->hasMany(Referral::class);
     }
 
 
@@ -118,7 +116,7 @@ trait Referrerable
     {
         // Get referral token from query.
         $referral_token = request()->hasCookie('referral_token') ? request()->cookie('referral_token') : null;
-        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->referrable_id : null;
+        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->user->id : null;
     }
 
 }
