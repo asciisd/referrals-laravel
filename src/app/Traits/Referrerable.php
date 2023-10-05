@@ -26,7 +26,7 @@ trait Referrerable
      */
     public function isReferred(): bool
     {
-        return isset($this->referrals->referrer_id);
+        return isset($this->referrable);
     }
 
 
