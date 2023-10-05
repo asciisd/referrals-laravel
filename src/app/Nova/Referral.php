@@ -52,10 +52,10 @@ class Referral extends Resource
             Text::make('Last Name')->sortable(),
             Text::make('Email')->sortable(),
             Text::make('Referral Token')->sortable(),
-            Number::make('# Referred Users', 'get_referrals_count')->sortable(),
+            Number::make('# Referred Users', 'referrals_count')->sortable(),
 
 
-            HasMany::make('Referral', 'getReferrals')
+            HasMany::make('Referral', 'referrals')
         ];
     }
 
@@ -105,7 +105,7 @@ class Referral extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        return $query->whereNotNull('referral_token')
-            ->withCount('getReferrals');
+        return $query->has('referrals')->whereNotNull('referral_token')
+            ->withCount('referrals');
     }
 }
