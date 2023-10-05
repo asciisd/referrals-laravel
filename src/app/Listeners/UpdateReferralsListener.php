@@ -3,7 +3,7 @@
 namespace Asciisd\ReferaralsLaravel\app\Listeners;
 
 
-use Asciisd\ReferaralsLaravel\app\Events\UpdateReferral;
+use Asciisd\ReferaralsLaravel\app\Listeners;
 use http\Cookie;
 
 class UpdateReferralsListener
