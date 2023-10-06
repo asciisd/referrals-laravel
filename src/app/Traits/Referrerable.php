@@ -13,7 +13,7 @@ trait Referrerable
 
     public function referrals(): HasMany
     {
-        return $this->hasMany(Referral::class);
+        return $this->hasMany(Referral::class, 'referrer_id', 'id');
     }
 
 
@@ -46,7 +46,7 @@ trait Referrerable
     public function generateReferralToken(): bool
     {
         if (!$this->hasReferralToken()) {
-            return $this->referrals()->update(['referral_token' => random_int(1000000, 9999999)]);
+            return $this->referrals()->first()->update(['referral_token' => random_int(1000000, 9999999)]);
 
         }
 
@@ -116,7 +116,7 @@ trait Referrerable
     {
         // Get referral token from query.
         $referral_token = request()->hasCookie('referral_token') ? request()->cookie('referral_token') : null;
-        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->user->id : null;
+        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->referrer->id : null;
     }
 
 }

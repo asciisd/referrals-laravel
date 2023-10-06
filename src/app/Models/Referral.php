@@ -41,7 +41,28 @@ class Referral extends Model
      */
     public function referrer(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'referrer_id', 'id');
+    }
+
+    /**
+     * Get all invited users by each referral user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function allReferrals()
+    {
+        return $this->hasMany(Referral::class, 'referrer_id', 'user_id');
+    }
+
+
+    /**
+     * This relationship to get the invited user details.
+     *
+     * @return void
+     */
+    public function details()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 }
