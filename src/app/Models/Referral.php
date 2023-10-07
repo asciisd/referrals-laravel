@@ -49,7 +49,7 @@ class Referral extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function allReferrals()
+    public function referrals()
     {
         return $this->hasMany(Referral::class, 'referrer_id', 'user_id');
     }

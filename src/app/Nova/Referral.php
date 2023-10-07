@@ -55,7 +55,7 @@ class Referral extends Resource
             }),
             Number::make('# Referrals', 'referrals_count')->sortable(),
             BelongsTo::make('Referrer', 'referrer', User::class)->display('first_name'),
-            HasMany::make('Referrals', 'allReferrals', Referral::class)
+            HasMany::make('Referrals', 'referrals', Referral::class)
         ];
     }
 
@@ -105,6 +105,6 @@ class Referral extends Resource
 
     public static function indexQuery(NovaRequest $request, $query)
     {
-        $query->withCount('allReferrals as referrals_count');
+        $query->whereNotNull('referral_token')->withCount('referrals as referrals_count');
     }
 }

@@ -6,14 +6,31 @@ use App\Models\User;
 use Asciisd\ReferralsLaravel\app\Models\Referral;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Ramsey\Uuid\Uuid;
 
 trait Referrerable
 {
 
+    /**
+     * Get referrals.
+     *
+     * @return HasMany
+     */
     public function referrals(): HasMany
     {
         return $this->hasMany(Referral::class, 'referrer_id', 'id');
+    }
+
+
+    /**
+     * Get referral detials from referrals table.
+     *
+     * @return HasMany
+     */
+    public function referral(): HasOne
+    {
+        return $this->hasOne(Referral::class, 'user_id', 'id');
     }
 
 
@@ -24,7 +41,7 @@ trait Referrerable
      */
     public function isReferred(): bool
     {
-        return isset($this->referrable);
+        return isset($this->referral->referrer_id);
     }
 
 
@@ -35,7 +52,7 @@ trait Referrerable
      */
     public function hasReferralToken(): bool
     {
-        return isset($this->referrals()->first()->referral_token);
+        return isset($this->referral->referral_token);
     }
 
     /**
@@ -46,7 +63,7 @@ trait Referrerable
     public function generateReferralToken(): bool
     {
         if (!$this->hasReferralToken()) {
-            return $this->referrals()->first()->update(['referral_token' => random_int(1000000, 9999999)]);
+            return $this->referral()->update(['referral_token' => random_int(1000000, 9999999)]);
 
         }
 
@@ -60,7 +77,7 @@ trait Referrerable
      */
     public function getReferralLink()
     {
-        return route(config('referrals.referral_route'), ['ref' => $this->referrals()->first()->referral_token]);
+        return route(config('referrals.referral_route'), ['ref' => $this->referral->referral_token]);
     }
 
 
@@ -84,7 +101,7 @@ trait Referrerable
      */
     public function getReferralToken()
     {
-        return $this->referrals()->first()->referral_token;
+        return $this->referral->referral_token;
     }
 
 
@@ -109,14 +126,19 @@ trait Referrerable
      */
     public function referrerId()
     {
-        return $this->id;
+        return $this->id;   //TODO::Fix with nova to show data with choosen referrerId
     }
 
+    /**
+     * Get the referralId from the ref cookie by referral token.
+     *
+     * @return null
+     */
     public function getReferrerIdFromReferralToken()
     {
         // Get referral token from query.
         $referral_token = request()->hasCookie('referral_token') ? request()->cookie('referral_token') : null;
-        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->referrer->id : null;
+        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->referrer->referrerId() : null;
     }
 
 }
