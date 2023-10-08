@@ -62,10 +62,23 @@ trait Referrerable
      */
     public function generateReferralToken(): bool
     {
-        if (!$this->hasReferralToken()) {
-            return $this->referral()->update(['referral_token' => random_int(1000000, 9999999)]);
+        $referral_token = random_int(1000000, 9999999);
+
+        // Check if use id is added in the referals table
+        if ($this->referral) {
+            if (!$this->hasReferralToken()) {
+                return $this->referral()->update(['referral_token' => $referral_token]);
+
+            }
+
+        } else{
+            // If not added in referrals table, create new relationship.
+            $this->referral()->create(['referral_token' => $referral_token]);
+
+            return true;
 
         }
+
 
         return false;
     }
@@ -77,7 +90,9 @@ trait Referrerable
      */
     public function getReferralLink()
     {
-        return route(config('referrals.referral_route'), ['ref' => $this->referral->referral_token]);
+        if ($this->hasReferralToken()) {
+            return route(config('referrals.referral_route'), ['ref' => $this->referral->referral_token]);
+        }
     }
 
 
@@ -101,7 +116,9 @@ trait Referrerable
      */
     public function getReferralToken()
     {
-        return $this->referral->referral_token;
+        if ($this->hasReferralToken()) {
+            return $this->referral->referral_token;
+        }
     }
 
 
@@ -126,7 +143,7 @@ trait Referrerable
      */
     public function referrerId()
     {
-        return $this->id;   //TODO::Fix with nova to show data with choosen referrerId
+        return $this->id;   //TODO::Fix with nova to show data with chosen referrerId
     }
 
     /**
