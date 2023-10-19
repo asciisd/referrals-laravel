@@ -155,7 +155,7 @@ trait Referrerable
     {
         // Get referral token from query.
         $referral_token = request()->hasCookie('referral_token') ? request()->cookie('referral_token') : null;
-        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->referrer->referrerId() : null;
+        return $referral_token != null ? Referral::where('referral_token', $referral_token)->first()->details->referrerId() : null;
     }
 
 }
