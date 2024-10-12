@@ -1,3 +1,7 @@
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE.md)
+[![Total Downloads][ico-downloads]][link-downloads]
+
 # Referrals package for laravel
 Compatible with laravel >= 8.0
 
@@ -138,3 +142,18 @@ $user->getReferralToken();
 ## Register with Nova
 Add nova resource `Referral` will be automatically published during publishing the service provider, to use
 the package with Nova just add the `Referral` resource to `NovaServiceProvider` file to register it inside your nova.
+
+[ico-version]: https://img.shields.io/packagist/v/asciisd/referrals-laravel.svg?style=flat
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
+[ico-status]: https://github.com/asciisd/referrals-laravel/workflows/tests/badge.svg
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/asciisd/referrals-laravel.svg?style=flat
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/asciisd/referrals-laravel.svg?style=flat
+[ico-downloads]: https://img.shields.io/packagist/dt/asciisd/referrals-laravel.svg?style=flat
+
+[link-packagist]: https://packagist.org/packages/asciisd/referrals-laravel
+[link-actions]: https://github.com/asciisd/knet/actions
+[link-scrutinizer]: https://scrutinizer-ci.com/g/asciisd/referrals-laravel/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/asciisd/referrals-laravel
+[link-downloads]: https://packagist.org/packages/asciisd/referrals-laravel
+[link-author]: https://github.com/asciisd
+[link-contributors]: ../../contributors
