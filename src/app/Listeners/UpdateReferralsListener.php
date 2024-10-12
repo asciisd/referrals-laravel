@@ -16,6 +16,9 @@ class UpdateReferralsListener
      */
     public function handle($event): void
     {
-        $event->user->referral()->create(['referrer_id' => $event->user->getReferrerIdFromReferralToken()]);
+        // Check first if getReferrerIdFromReferralToken not empty
+        if ($event->user->getReferrerIdFromReferralToken()) {
+            $event->user->referral()->create(['referrer_id' => $event->user->getReferrerIdFromReferralToken()]);
+        }
     }
 }
